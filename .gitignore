@@ -1,0 +1,18 @@
+# secrets - never upload
+.env
+.env.*
+!.env.example
+backend/.env
+
+# dependencies / generated
+node_modules/
+backend/node_modules/
+*.log
+.cache/
+backend/.cache/
+data/
+backend/data/
+
+# OS / editor
+.DS_Store
+Thumbs.db

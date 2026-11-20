@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: angelone-vwap-rsi
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: HOST
+        value: 0.0.0.0
+      # Secrets: Render asks you to type these in its dashboard (they are NOT stored in this file)
+      - key: ANGEL_API_KEY
+        sync: false
+      - key: ANGEL_CLIENT_CODE
+        sync: false
+      - key: ANGEL_PIN
+        sync: false
+      - key: ANGEL_TOTP_SECRET
+        sync: false
+      - key: APP_USERNAME
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # Free disk is wiped on restart, so the starting watchlist comes from here (format SYMBOL:TOKEN,SYMBOL:TOKEN)
+      - key: WATCHLIST
+        value: BANKNIFTY:99926009
+      - key: TIMEFRAME
+        value: 5
